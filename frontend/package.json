@@ -1,6 +1,7 @@
 {
   "name": "frontend",
   "private": true,
+  "homepage": "https://Tmalone1250.github.io/stockanalyzer",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
