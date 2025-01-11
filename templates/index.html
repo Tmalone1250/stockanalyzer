@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Analyzer</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css', v=2) }}">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Stock Analyzer</h1>
+        
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="input-group mb-3">
+                    <input type="text" id="stockSymbol" class="form-control" placeholder="Enter stock symbol (e.g., AAPL)" onkeypress="if(event.key === 'Enter') getStockData()">
+                    <button class="btn btn-primary" onclick="getStockData()" id="analyzeBtn">Analyze</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="loading" class="text-center mt-4" style="display: none;">
+            <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+            <p class="mt-2">Fetching stock data...</p>
+        </div>
+
+        <div id="error" class="alert alert-danger mt-3" style="display: none;"></div>
+
+        <div id="stockInfo" class="row mt-4" style="display: none;">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h2 id="companyName" class="card-title"></h2>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <p><strong>Sector:</strong> <span id="sector"></span></p>
+                            </div>
+                            <div class="col-md-4">
+                                <p><strong>Market Cap:</strong> <span id="marketCap"></span></p>
+                            </div>
+                            <div class="col-md-4">
+                                <p><strong>Current Price:</strong> <span id="currentPrice"></span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="chart" class="mt-4"></div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js', v=2) }}"></script>
+</body>
+</html>
